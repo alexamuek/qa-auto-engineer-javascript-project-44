@@ -23,6 +23,20 @@ const sendNegativeDecision = (name, expectedAnswer, userAnswer) => {
 
 const sendPositiveDecision = (name) => console.log(`Congratulations, ${name}!`);
 
+const showDescription = (gameName) => {
+  switch (gameName){
+    case 'brain-even':
+      console.log('Answer "yes" if the number is even, otherwise answer "no".');
+      break;
+    case 'brain-calc':
+      console.log('What is the result of the expression?');
+    case 'brain-gcd':
+      console.log('Find the greatest common divisor of given numbers.');
+    default:
+      break;
+  }
+};
+
 export {
   getRandomInt,
   welcomeUser,
@@ -31,4 +45,5 @@ export {
   getAnswer,
   sendNegativeDecision,
   sendPositiveDecision,
+  showDescription,
 };

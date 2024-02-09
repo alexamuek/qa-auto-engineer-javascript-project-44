@@ -5,10 +5,12 @@ import {
   getAnswer,
   sendNegativeDecision,
   sendPositiveDecision,
+  showDescription,
 } from './utils.js';
 
 import callBrainEven from '../games/callBrainEvenGame.js';
 import callBrainCalc from '../games/callBrainCalcGame.js';
+import callBrainGcd from '../games/callBrainGcdGame.js';
 
 const runGame = (gameName) => {
   let questionPart;
@@ -19,20 +21,24 @@ const runGame = (gameName) => {
 
   welcomeUser();
   const userName = getName();
-  if (gameName === 'brain-even') {
-    console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  } else {
-    console.log('What is the result of the expression?');
-  }
+
+  showDescription(gameName);
   while (i < 3) {
-    if (gameName === 'brain-even') {
-      info = callBrainEven();
-    } else {
-      info = callBrainCalc();
+    switch (gameName) {
+      case 'brain-even':
+        info = callBrainEven();
+        break;
+      case 'brain-calc':
+        info = callBrainCalc();
+        break;
+      case 'brain-gcd':
+        info = callBrainGcd();
+        break;
+      default:
+        break;
     }
 
-    questionPart = info[0];
-    expectedAnswer = String(info[1]);
+    [questionPart, expectedAnswer] = info;
     showQuestion(questionPart);
     userAnswer = getAnswer();
 

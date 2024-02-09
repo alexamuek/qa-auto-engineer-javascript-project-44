@@ -54,7 +54,7 @@ const callBrainCalc = () => {
   const answer = infoForGame[0];
   const questionPart = infoForGame[1];
 
-  return [questionPart, answer];
+  return [questionPart, String(answer)];
 };
 
 export default callBrainCalc;
