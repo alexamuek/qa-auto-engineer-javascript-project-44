@@ -11,6 +11,7 @@ import {
 import callBrainEven from '../games/callBrainEvenGame.js';
 import callBrainCalc from '../games/callBrainCalcGame.js';
 import callBrainGcd from '../games/callBrainGcdGame.js';
+import callBrainProgression from '../games/callBrainProgressionGame.js';
 
 const runGame = (gameName) => {
   let questionPart;
@@ -33,6 +34,9 @@ const runGame = (gameName) => {
         break;
       case 'brain-gcd':
         info = callBrainGcd();
+        break;
+      case 'brain-progression':
+        info = callBrainProgression();
         break;
       default:
         break;

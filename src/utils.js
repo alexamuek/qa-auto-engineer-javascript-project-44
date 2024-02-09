@@ -32,6 +32,8 @@ const showDescription = (gameName) => {
       console.log('What is the result of the expression?');
     case 'brain-gcd':
       console.log('Find the greatest common divisor of given numbers.');
+    case 'brain-progression':
+      console.log('What number is missing in the progression?');
     default:
       break;
   }

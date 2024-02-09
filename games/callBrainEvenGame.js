@@ -5,10 +5,9 @@ import {
 const callBrainEven = () => {
   const minValue = 0;
   const maxValue = 100;
-
   let answer;
-
   const randomNumber = getRandomInt(minValue, maxValue);
+
   if (randomNumber % 2 === 0) {
     answer = 'yes';
   } else {
