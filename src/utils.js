@@ -34,6 +34,8 @@ const showDescription = (gameName) => {
       console.log('Find the greatest common divisor of given numbers.');
     case 'brain-progression':
       console.log('What number is missing in the progression?');
+    case 'brain-prime':
+      console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
     default:
       break;
   }
