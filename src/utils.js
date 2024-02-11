@@ -11,7 +11,7 @@ const getName = () => {
 };
 
 const showQuestion = (data) => {
-  readlineSync.question(`Question: ${data} \n`);
+  console.log(`Question: ${data}`);
 };
 
 const getAnswer = () => readlineSync.question('Your answer: ');
