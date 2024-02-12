@@ -1,6 +1,4 @@
-import {
-  getRandomInt,
-} from '../src/utils.js';
+import getRandomInt from '../src/utils.js';
 import gameEngine from '../src/index.js';
 
 const callBrainPrime = () => {
