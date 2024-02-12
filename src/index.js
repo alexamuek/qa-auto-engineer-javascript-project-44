@@ -1,67 +1,34 @@
 import {
   welcomeUser,
   getName,
-  showQuestion,
   getAnswer,
-  sendNegativeDecision,
-  sendPositiveDecision,
-  showDescription,
-} from './utils.js';
+} from './helpers.js';
 
-import callBrainEven from '../games/callBrainEvenGame.js';
-import callBrainCalc from '../games/callBrainCalcGame.js';
-import callBrainGcd from '../games/callBrainGcdGame.js';
-import callBrainProgression from '../games/callBrainProgressionGame.js';
-import callBrainPrime from '../games/callBrainPrimeGame.js';
-
-const runGame = (gameName) => {
-  let questionPart;
+const gameEngine = (questionPart, expectedAnswer, description) => {
   let userAnswer;
-  let expectedAnswer;
   let i = 0;
-  let info;
 
   welcomeUser();
   const userName = getName();
 
-  showDescription(gameName);
+  console.log(description);
   while (i < 3) {
-    switch (gameName) {
-      case 'brain-even':
-        info = callBrainEven();
-        break;
-      case 'brain-calc':
-        info = callBrainCalc();
-        break;
-      case 'brain-gcd':
-        info = callBrainGcd();
-        break;
-      case 'brain-progression':
-        info = callBrainProgression();
-        break;
-      case 'brain-prime':
-        info = callBrainPrime();
-        break;
-      default:
-        break;
-    }
-
-    [questionPart, expectedAnswer] = info;
-    showQuestion(questionPart);
+    console.log(`Question: ${questionPart[i]}`);
     userAnswer = getAnswer();
 
-    if (userAnswer.toLowerCase() === expectedAnswer) {
+    if (userAnswer.toLowerCase() === expectedAnswer[i]) {
       console.log('Correct!');
     } else {
-      sendNegativeDecision(userName, expectedAnswer, userAnswer);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer[i]}'`);
+      console.log(`Let's try again, ${userName}!`);
       break;
     }
     i += 1;
   }
 
   if (i === 3) {
-    sendPositiveDecision(userName);
+    console.log(`Congratulations, ${userName}!`);
   }
 };
 
-export default runGame;
+export default gameEngine;
