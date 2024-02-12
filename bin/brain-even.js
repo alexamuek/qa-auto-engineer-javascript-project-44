@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import callBrainEven from '../games/callBrainEvenGame.js';
+import callBrainEven from '../src/games/callBrainEvenGame.js';
 
 callBrainEven();

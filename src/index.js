@@ -1,20 +1,18 @@
-import {
-  welcomeUser,
-  getName,
-  getAnswer,
-} from './helpers.js';
+import readlineSync from 'readline-sync';
 
 const gameEngine = (questionPart, expectedAnswer, description) => {
   let userAnswer;
   let i = 0;
 
-  welcomeUser();
-  const userName = getName();
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
 
   console.log(description);
+
   while (i < 3) {
     console.log(`Question: ${questionPart[i]}`);
-    userAnswer = getAnswer();
+    userAnswer = readlineSync.question('Your answer: ');
 
     if (userAnswer.toLowerCase() === expectedAnswer[i]) {
       console.log('Correct!');

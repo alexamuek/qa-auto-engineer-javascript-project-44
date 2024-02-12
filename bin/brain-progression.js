@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import callBrainProgression from '../games/callBrainProgressionGame.js';
+import callBrainProgression from '../src/games/callBrainProgressionGame.js';
 
 callBrainProgression();

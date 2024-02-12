@@ -1,5 +1,5 @@
-import getRandomInt from '../src/utils.js';
-import gameEngine from '../src/index.js';
+import getRandomInt from '../utils.js';
+import gameEngine from '../index.js';
 
 const prepareExpression = (operator, value1, value2) => {
   const firstOperand = getRandomInt(value1, value2);

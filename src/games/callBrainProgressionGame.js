@@ -1,5 +1,5 @@
-import getRandomInt from '../src/utils.js';
-import gameEngine from '../src/index.js';
+import getRandomInt from '../utils.js';
+import gameEngine from '../index.js';
 
 const callBrainProgression = () => {
   const minValue = 5;
