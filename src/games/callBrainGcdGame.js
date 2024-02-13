@@ -15,7 +15,7 @@ const callBrainGcd = () => {
   for (let i = 0; i <= 2; i += 1) {
     number1 = getRandomInt(minValue, maxValue);
     number2 = getRandomInt(minValue, maxValue);
-    questionData[i] = `${number1} ${number2}`;
+    questionData[i] = `${number1} ${number2} `;
     while (Math.abs(number1 - number2) >= 0) {
       result = Math.abs(number1 - number2);
       if (result === 0) {
