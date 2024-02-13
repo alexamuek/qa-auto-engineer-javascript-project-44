@@ -4,10 +4,10 @@ import gameEngine from '../index.js';
 const callBrainProgression = () => {
   const minValue = 5;
   const maxValue = 10;
-  let len;
-  let step;
-  let firstNumber;
-  let indexOfHidden;
+  const len = [];
+  const step = [];
+  const firstNumber = [];
+  const indexOfHidden = [];
   const questionData = [];
   const expectedAnswers = [];
   const description = 'What number is missing in the progression?';
@@ -15,17 +15,17 @@ const callBrainProgression = () => {
   // three rounds
   for (let i = 0; i <= 2; i += 1) {
     questionData[i] = '';
-    len = getRandomInt(minValue, maxValue);
-    step = getRandomInt(minValue, maxValue);
-    firstNumber = getRandomInt(minValue, maxValue);
-    indexOfHidden = getRandomInt(0, len - 1);
+    len[i] = getRandomInt(minValue, maxValue);
+    step[i] = getRandomInt(minValue, maxValue);
+    firstNumber[i] = getRandomInt(minValue, maxValue);
+    indexOfHidden[i] = getRandomInt(0, len[i] - 1);
 
-    for (let j = 0; j < len; j += 1) {
-      if (j === indexOfHidden) {
+    for (let j = 0; j < len[i]; j += 1) {
+      if (j === indexOfHidden[i]) {
         questionData[i] = `${questionData[i]}.. `;
-        expectedAnswers[i] = String(firstNumber + step * j);
+        expectedAnswers[i] = String(firstNumber[i] + step[i] * j);
       } else {
-        questionData[i] = `${questionData[i]}${(firstNumber + step * j)} `;
+        questionData[i] = `${questionData[i]}${(firstNumber[i] + step[i] * j)} `;
       }
     }
   }

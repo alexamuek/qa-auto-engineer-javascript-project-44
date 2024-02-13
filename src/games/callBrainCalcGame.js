@@ -4,57 +4,55 @@ import gameEngine from '../index.js';
 const prepareExpression = (operator, value1, value2) => {
   const firstOperand = getRandomInt(value1, value2);
   const secondOperand = getRandomInt(value1, value2);
-  let result;
+  const expression = `${firstOperand} ${operator} ${secondOperand}`;
   switch (operator) {
     case '+':
-      result = firstOperand + secondOperand;
-      break;
+      return [expression, String(firstOperand + secondOperand)];
     case '-':
-      result = firstOperand - secondOperand;
-      break;
+      return [expression, String(firstOperand - secondOperand)];
     case '*':
-      result = firstOperand * secondOperand;
-      break;
+      return [expression, String(firstOperand * secondOperand)];
     default:
       break;
   }
-  const expression = `${firstOperand} ${operator} ${secondOperand}`;
-  return [expression, String(result)];
+  return ['', 0];
 };
 
 const callBrainCalc = () => {
-  let mathOperation;
-  let minValue;
-  let maxValue;
+  const mathOperation = [];
+  const minValue = [];
+  const maxValue = [];
   const questionData = [];
   const expectedAnswers = [];
   const description = 'What is the result of the expression?';
 
-  minValue = 0;
-  maxValue = 2;
+  const minIndexValue = 0;
+  const maxIndexValue = 2;
   // three rounds
   for (let i = 0; i <= 2; i += 1) {
-    switch (getRandomInt(minValue, maxValue)) {
+    switch (getRandomInt(minIndexValue, maxIndexValue)) {
       case 0:
-        mathOperation = '+';
-        minValue = 0;
-        maxValue = 50;
+        mathOperation[i] = '+';
+        minValue[i] = 0;
+        maxValue[i] = 50;
         break;
       case 1:
-        mathOperation = '-';
-        minValue = 0;
-        maxValue = 100;
+        mathOperation[i] = '-';
+        minValue[i] = 0;
+        maxValue[i] = 100;
         break;
       case 2:
-        mathOperation = '*';
-        minValue = 0;
-        maxValue = 10;
+        mathOperation[i] = '*';
+        minValue[i] = 0;
+        maxValue[i] = 10;
         break;
       default:
         break;
     }
-    [questionData[i], expectedAnswers[i]] = prepareExpression(mathOperation, minValue, maxValue);
+    [questionData[i],
+      expectedAnswers[i]] = prepareExpression(mathOperation[i], minValue[i], maxValue[i]);
   }
+
   // call engine
   gameEngine(questionData, expectedAnswers, description);
 };
