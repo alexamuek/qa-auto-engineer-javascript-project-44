@@ -5,8 +5,7 @@ const generateRound = () => {
   const minValue = 0;
   const maxValue = 100;
   const questionPart = getRandomInt(minValue, maxValue);
-  const result = (questionPart % 2 === 0) ? [questionPart, 'yes'] : [questionPart, 'no'];
-  return result;
+  return (questionPart % 2 === 0) ? [questionPart, 'yes'] : [questionPart, 'no'];
 };
 
 const callBrainEven = () => {
