@@ -1,25 +1,18 @@
 import getRandomInt from '../utils.js';
 import gameEngine from '../index.js';
 
-const callBrainEven = () => {
+const generateRound = () => {
   const minValue = 0;
   const maxValue = 100;
-  const questionData = [];
-  const expectedAnswers = [];
+  const questionPart = getRandomInt(minValue, maxValue);
+  const result = (questionPart % 2 === 0) ? [questionPart, 'yes'] : [questionPart, 'no'];
+  return result;
+};
+
+const callBrainEven = () => {
   const description = 'Answer "yes" if the number is even, otherwise answer "no".';
-
-  // three rounds
-  for (let i = 0; i <= 2; i += 1) {
-    questionData[i] = getRandomInt(minValue, maxValue);
-    if (questionData[i] % 2 === 0) {
-      expectedAnswers[i] = 'yes';
-    } else {
-      expectedAnswers[i] = 'no';
-    }
-  }
-
   // call engine
-  gameEngine(questionData, expectedAnswers, description);
+  gameEngine(generateRound, description);
 };
 
 export default callBrainEven;

@@ -1,11 +1,11 @@
 import getRandomInt from '../utils.js';
 import gameEngine from '../index.js';
 
-const prepareExpression = (operator, value1, value2) => {
-  const firstOperand = getRandomInt(value1, value2);
-  const secondOperand = getRandomInt(value1, value2);
-  const expression = `${firstOperand} ${operator} ${secondOperand}`;
-  switch (operator) {
+const prepareExpression = (data) => {
+  const firstOperand = getRandomInt(data[1], data[2]);
+  const secondOperand = getRandomInt(data[1], data[2]);
+  const expression = `${firstOperand} ${data[0]} ${secondOperand}`;
+  switch (data[0]) {
     case '+':
       return [expression, String(firstOperand + secondOperand)];
     case '-':
@@ -18,43 +18,37 @@ const prepareExpression = (operator, value1, value2) => {
   return ['', 0];
 };
 
-const callBrainCalc = () => {
-  const mathOperation = [];
-  const minValue = [];
-  const maxValue = [];
-  const questionData = [];
-  const expectedAnswers = [];
-  const description = 'What is the result of the expression?';
-
+const generateRound = () => {
+  const dataForPrepering = ['', 0, 0];
   const minIndexValue = 0;
   const maxIndexValue = 2;
-  // three rounds
-  for (let i = 0; i <= 2; i += 1) {
-    switch (getRandomInt(minIndexValue, maxIndexValue)) {
-      case 0:
-        mathOperation[i] = '+';
-        minValue[i] = 0;
-        maxValue[i] = 50;
-        break;
-      case 1:
-        mathOperation[i] = '-';
-        minValue[i] = 0;
-        maxValue[i] = 100;
-        break;
-      case 2:
-        mathOperation[i] = '*';
-        minValue[i] = 0;
-        maxValue[i] = 10;
-        break;
-      default:
-        break;
-    }
-    [questionData[i],
-      expectedAnswers[i]] = prepareExpression(mathOperation[i], minValue[i], maxValue[i]);
+  switch (getRandomInt(minIndexValue, maxIndexValue)) {
+    case 0:
+      dataForPrepering[0] = '+';
+      dataForPrepering[1] = 0;
+      dataForPrepering[2] = 50;
+      break;
+    case 1:
+      dataForPrepering[0] = '-';
+      dataForPrepering[1] = 0;
+      dataForPrepering[2] = 100;
+      break;
+    case 2:
+      dataForPrepering[0] = '*';
+      dataForPrepering[1] = 0;
+      dataForPrepering[2] = 10;
+      break;
+    default:
+      break;
   }
 
+  return prepareExpression(dataForPrepering);
+};
+
+const callBrainCalc = () => {
+  const description = 'What is the result of the expression?';
   // call engine
-  gameEngine(questionData, expectedAnswers, description);
+  gameEngine(generateRound, description);
 };
 
 export default callBrainCalc;
