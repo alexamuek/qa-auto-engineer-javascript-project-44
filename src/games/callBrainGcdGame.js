@@ -10,7 +10,7 @@ const generateRound = () => {
 
   number1 = getRandomInt(minValue, maxValue);
   number2 = getRandomInt(minValue, maxValue);
-  const questionPart = `${number1} ${number2} `;
+  const questionPart = `${number1} ${number2}`;
   while (Math.abs(number1 - number2) >= 0) {
     gcd = Math.abs(number1 - number2);
     if (gcd === 0) {
@@ -20,6 +20,9 @@ const generateRound = () => {
       number1 = gcd;
     }
   }
+  console.log(questionPart);
+  console.log(number1);
+
   return [questionPart, String(number1)];
 };
 
