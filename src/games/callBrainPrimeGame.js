@@ -1,16 +1,21 @@
 import getRandomInt from '../utils.js';
 import gameEngine from '../index.js';
 
+const calculate = (number1) => {
+  for (let j = 2; j < number1; j += 1) {
+    if (number1 % j === 0) {
+      return 'no';
+    }
+  }
+  return 'yes';
+};
+
 const generateRound = () => {
   const minValue = 0;
   const maxValue = 100;
   const questionPart = getRandomInt(minValue, maxValue);
-  for (let j = 2; j < questionPart; j += 1) {
-    if (questionPart % j === 0) {
-      return [questionPart, 'no'];
-    }
-  }
-  return (questionPart === 1) ? [questionPart, 'no'] : [questionPart, 'yes'];
+  const expectedAnswer = calculate(questionPart);
+  return (questionPart === 1) ? [questionPart, 'no'] : [questionPart, expectedAnswer];
 };
 
 const callBrainPrime = () => {
