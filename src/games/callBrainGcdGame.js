@@ -20,9 +20,6 @@ const generateRound = () => {
       number1 = gcd;
     }
   }
-  console.log(questionPart);
-  console.log(number1);
-
   return [questionPart, String(number1)];
 };
 
