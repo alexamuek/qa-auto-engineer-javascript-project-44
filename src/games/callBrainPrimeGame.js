@@ -10,7 +10,7 @@ const generateRound = () => {
       return [questionPart, 'no'];
     }
   }
-  return [questionPart, 'yes'];
+  return (questionPart === 1) ? [questionPart, 'no'] : [questionPart, 'yes'];
 };
 
 const callBrainPrime = () => {
